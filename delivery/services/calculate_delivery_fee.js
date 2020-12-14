@@ -11,15 +11,6 @@ async function get_coordinates(address) {
     result = {}
     result['latitude'] = r.data[0].latitude
     result['longitude'] = r.data[0].longitude
-        // .then(response => {
-        //     r = response.data
-        //     result['latitude'] = r.data[0].latitude
-        //     result['longitude'] = r.data[0].longitude
-        // }).catch(error => {
-        //     console.log(error);
-        // });
-    console.log(response.data)
-    console.log(result)
     return result;
 }
 
@@ -42,36 +33,13 @@ function calculate_distance(coordinates) {
         dist = dist * 180 / Math.PI;
         dist = dist * 60 * 1.1515;
         dist = dist * 1.609344
-        // if (unit == "N") { dis = dist * 0.8684 }
         return dist;
     }
 }
 
 
 module.exports = {
-    calculate: function (address) { 
-        // var coordinates = async () => {return await get_coordinates(address)};
-        // cepCheck(obj).then(function(resultado){
-        //     console.log("Meu resultado é", resultado);
-        // })
-        // .catch(function(){
-        //     console.log("Error");
-        // });
-        
-        /// teste.then(function(resultado){ ...
-        get_coordinates(address).then(function(resultado){
-            var distance = calculate_distance(resultado);
-            console.log(((distance * 0.47)/17).toFixed(2));
-            return (distance * 2.47).toFixed(2);
-        })
-        .catch(function(){
-            console.log("Error");
-        });
-        
-        // console.log('v ' + v);
-        // console.log(coordinates);
-        // var distance = calculate_distance(coordinates);
-        // console.log(distance)
-        // return (distance * 2.47).toFixed(2);
-    }
+    get_coordinates: get_coordinates,
+
+    calculate_distance: calculate_distance
 }
