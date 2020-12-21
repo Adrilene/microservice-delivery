@@ -1,6 +1,7 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
 const config     = require('config');
+const cors = require('cors')
 
 module.exports = () => {
     const app = express();
@@ -10,6 +11,8 @@ module.exports = () => {
 
     // MIDDLEWARES
     app.use(bodyParser.json());
+    app.use(cors())
+
     require('../delivery/routes/delivery_routes')(app);
     return app;
 };
