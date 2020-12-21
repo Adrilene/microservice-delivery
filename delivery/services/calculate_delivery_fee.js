@@ -17,7 +17,7 @@ async function get_coordinates(cep) {
         access_key: APIKEY,
         query: address
     }
-    const response = await axios.get('http://api.positionstack.com/v1/forward', { params })
+    const response = await axios.get(url, { params })
     r = response.data
     result = {}
     result['latitude'] = r.data[0].latitude
